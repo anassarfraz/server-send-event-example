@@ -1,5 +1,4 @@
 # server-send-event-example
-# Event-Driven Application Example
 
 This is an example event-driven application that demonstrates real-time event updates from the backend to the frontend using Server-Sent Events (SSE).
 
