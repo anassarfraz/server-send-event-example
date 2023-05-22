@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EventSource Example</title>
+</head>
+<body>
+  <h1>EventSource Example</h1>
+  <ul id="event-list"></ul>
+
+  <script>
+    const eventList = document.getElementById('event-list');
+
+    // Establish EventSource connection
+    const eventSource = new EventSource('http://localhost:3000/events');
+
+    // Event listener for 'userAdded' event
+    eventSource.addEventListener('userAdded', (event) => {
+      const data = JSON.parse(event.data);
+      const listItem = document.createElement('li');
+      listItem.textContent = `User added: ${data}`;
+      eventList.appendChild(listItem);
+    });
+
+    // Event listener for 'userDeleted' event
+    eventSource.addEventListener('userDeleted', (event) => {
+      const data = JSON.parse(event.data);
+      const listItem = document.createElement('li');
+      listItem.textContent = `User deleted: ${data}`;
+      eventList.appendChild(listItem);
+    });
+  </script>
+</body>
+</html>
